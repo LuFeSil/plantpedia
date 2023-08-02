@@ -85,14 +85,15 @@ export function PlantEntryInline({
         <div
           className={`opacity-95 hover:opacity-100 flex items-end ${className}`}
         >
-          <Image
-            src={image.url}
-            layout={LayoutTypes.FIXED}
-            width={84}
-            aspectRatio={AspectRatioTypes['1:1']}
-            fit={FitTypes.FILL}
-            className="flex-none"
-          />
+          <div className="flex-none">
+            <Image
+              src={image.url}
+              layout={LayoutTypes.FIXED}
+              width={84}
+              aspectRatio={AspectRatioTypes['1:1']}
+              fit={FitTypes.FILL}
+            />
+          </div>
           <div className="pl-2 flex-auto">
             <Typography variant="h6" className="break-words">
               {plantName}
