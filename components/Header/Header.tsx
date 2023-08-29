@@ -4,6 +4,7 @@ import { NavBar } from '@ui/NavBar'
 import { Button } from '@ui/Button'
 
 import { PreviewModeBanner } from './PreviewModeBanner'
+import LanguageSelector from '@components/LanguageSelector/LanguageSelector'
 
 export function Header() {
   return (
@@ -11,8 +12,9 @@ export function Header() {
       <PreviewModeBanner />
       <div className="mx-auto" style={{ maxWidth: '98%' }}>
         <NavBar title="🌿 Plantpedia">
-          <div>
+          <div className="flex gap-4">
             <NavLink href="/top-stories">Top Stories</NavLink>
+            <LanguageSelector />
           </div>
         </NavBar>
       </div>

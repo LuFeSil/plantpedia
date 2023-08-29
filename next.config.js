@@ -8,6 +8,11 @@ const config = {
   },
   images: {
     domains: ['images.ctfassets.net'],
+    formats: ['image/png'],
+  },
+  i18n: {
+    locales: ['en-US', 'es'],
+    defaultLocale: 'en-US',
   },
 }
 
