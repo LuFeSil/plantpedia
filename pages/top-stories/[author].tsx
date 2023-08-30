@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { useTranslation } from 'next-i18next'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { Typography } from '@ui/Typography'
 import { VerticalTabs, TabItem } from '@ui/Tabs'
 import { Alert } from '@ui/Alert'
