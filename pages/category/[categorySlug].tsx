@@ -1,11 +1,11 @@
 import { GetStaticProps, InferGetStaticPropsType, GetStaticPaths } from 'next'
-
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { getCategoryList, getPlantListByCategory } from '@api'
-
 import { Alert } from '@ui/Alert'
 import { Typography } from '@ui/Typography'
 import { Layout } from '@components/Layout'
 import { PlantCollection } from '@components/PlantCollection'
+import { useTranslation } from 'next-i18next'
 
 type CategoryPageProps = {
   entries: Plant[]
@@ -14,6 +14,7 @@ type CategoryPageProps = {
 
 export const getStaticProps: GetStaticProps<CategoryPageProps> = async ({
   params,
+  locale,
 }) => {
   const slug = params?.categorySlug
 
@@ -27,13 +28,17 @@ export const getStaticProps: GetStaticProps<CategoryPageProps> = async ({
     const { entries, category } = await getPlantListByCategory({
       category: slug,
       limit: 12,
+      locale,
     })
+
+    const i18nConf = await serverSideTranslations(locale!)
 
     return {
       props: {
         entries,
         category,
         status: 'success',
+        ...i18nConf,
       },
       revalidate: 15 * 60, // once every fifteen minutes
     }
@@ -73,15 +78,16 @@ export default function CategoryPage({
   entries,
   category,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
+  const { t } = useTranslation(['page-category'])
   return (
     <Layout>
       <Typography variant="h2" className="text-center mb-12">
-        Category: {category.title}
+        {t('category', { name: category.title })}
       </Typography>
       <PlantCollection plants={entries} />
       {entries.length > 0 ? null : (
         <Alert severity="info">
-          We couldn't find any entry for {category.title}
+          {t('categoryHasNoEntries', { name: category.title })}
         </Alert>
       )}
       {/* Pagination is missing. Can you add it?  */}

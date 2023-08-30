@@ -22,9 +22,7 @@ const LanguageSelector = () => {
         <img
           className="w-8 h-8 mr-2"
           src={
-            locale === 'en-US'
-              ? './united-states-of-america.png'
-              : './spain.png'
+            locale === 'en-US' ? '/united-states-of-america.png' : '/spain.png'
           }
           alt="language-icon"
         />
@@ -71,8 +69,8 @@ const LanguageSelector = () => {
                       className="w-8 h-8 mr-2"
                       src={
                         loc === 'en-US'
-                          ? './united-states-of-america.png'
-                          : './spain.png'
+                          ? '/united-states-of-america.png'
+                          : '/spain.png'
                       }
                       alt="language-icon"
                     />
